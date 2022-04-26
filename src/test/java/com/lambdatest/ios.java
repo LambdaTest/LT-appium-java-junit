@@ -14,9 +14,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class NativeApp {
-    String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
-    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
+public class ios {
+    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME"   //Enter the Username here
+            : System.getenv("LT_USERNAME");
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"   //Enter the Access key here
+            : System.getenv("LT_ACCESS_KEY");
     public static RemoteWebDriver driver = null;
     public String gridURL = "@beta-hub.lambdatest.com/wd/hub";
     public String status = "passed";
@@ -25,12 +27,12 @@ public class NativeApp {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("build", "JUNIT Native App automation");
-        capabilities.setCapability("name", "Test 1");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("deviceName", "Galaxy S21");
+        capabilities.setCapability("name", "Java JUnit iOS iPhone 12");
+        capabilities.setCapability("platformName", "ios");
+        capabilities.setCapability("deviceName", "iPhone 12");
         capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion","11");
-        capabilities.setCapability("app","lt://APP100201841648497755622971");
+        capabilities.setCapability("platformVersion","15");
+        capabilities.setCapability("app","lt://APP100202491650549951124834");
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
@@ -82,8 +84,8 @@ public class NativeApp {
 
 
             WebDriverWait browser = new WebDriverWait(driver, 30);
-            browser.until(ExpectedConditions.elementToBeClickable(By.id("webview")));
-            driver.findElementById("webview").click();
+            browser.until(ExpectedConditions.elementToBeClickable(By.id("Browser")));
+            driver.findElementById("Browser").click();
             Thread.sleep(10000);
 
 

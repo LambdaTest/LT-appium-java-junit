@@ -35,13 +35,19 @@ set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
 
-Step 3. To run your First Test.
+Step 3. Before running the Test
+
+```
+mvn clean
+```
+
+Step 4. To run your First Test.
 
 ```
 mvn test -P single
 ```
 
-Step 4. To run Parallel Test.
+Step 5. To run Parallel Test.
 
 ```
 mvn test -P parallel

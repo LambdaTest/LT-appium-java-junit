@@ -32,7 +32,7 @@ public class ios {
         capabilities.setCapability("deviceName", "iPhone 12");
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","15");
-        capabilities.setCapability("app","lt://APP100202491650549951124834");
+        capabilities.setCapability("app","App_ID"); //Enter the APP_ID here
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
@@ -55,47 +55,25 @@ public class ios {
     {
         try
         {
-            WebDriverWait color = new WebDriverWait(driver, 30);
-            color.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color")));
-            driver.findElementById("color").click();
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
 
-
-            WebDriverWait geo =  new WebDriverWait(driver, 30);
-            geo.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation")));
-            driver.findElementById("geoLocation").click();
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
             Thread.sleep(5000);
             driver.navigate().back();
 
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
 
-            WebDriverWait text = new WebDriverWait(driver, 30);
-            text.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text")));
-            driver.findElementById("Text").click();
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
 
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
 
-            WebDriverWait nf =  new WebDriverWait(driver, 30);
-            nf.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification")));
-            driver.findElementById("notification").click();
-
-
-            WebDriverWait toast = new WebDriverWait(driver, 30);
-            toast.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast")));
-            driver.findElementById("toast").click();
-
-
-
-            WebDriverWait browser = new WebDriverWait(driver, 30);
-            browser.until(ExpectedConditions.elementToBeClickable(By.id("Browser")));
-            driver.findElementById("Browser").click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("Browser"))).click();
             Thread.sleep(10000);
 
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");;
 
-            WebDriverWait el7 =  new WebDriverWait(driver, 30);
-            el7.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url")));
-            driver.findElementById("url").sendKeys("https://www.lambdatest.com/");
-
-            WebDriverWait el8 =  new WebDriverWait(driver, 30);
-            el8.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find")));
-            driver.findElementById("find").click();
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find"))).click();
             Thread.sleep(5000);
             driver.navigate().back();
 

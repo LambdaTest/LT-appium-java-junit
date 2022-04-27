@@ -1,4 +1,4 @@
-# JUnit Appium tutorial
+# LT-appium-java-junit
 
 ## Prerequisites
 

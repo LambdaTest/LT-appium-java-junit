@@ -20,7 +20,7 @@ public class ios {
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"   //Enter the Access key here
             : System.getenv("LT_ACCESS_KEY");
     public static RemoteWebDriver driver = null;
-    public String gridURL = "@beta-hub.lambdatest.com/wd/hub";
+    public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
     public String status = "passed";
     @Before
     public void setUp() throws Exception {

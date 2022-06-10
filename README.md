@@ -1,10 +1,10 @@
-# How to mark test as Passed or Failed in Java JUnit with Appium on [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=appium-junit-passfail)
+# How to to change IP geographic location in Java JUnit with Appium on [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=appium-junit-geolocation)
 
-While performing app automation testing with appium on LambdaTest Grid, you may face a scenario where a test that you declared as fail in your local instance may turn out to be completed successfully at LambdaTest. Don't worry though! We understand how imperative it is to flag an app automation test as either "pass" or "fail" depending upon your testing requirement with respect to the validation of expected behaviour. You can refer to sample test repo [here](https://github.com/LambdaTest/LT-appium-java-junit).
+While performing app automation testing with appium on LambdaTest Grid, you may face a scenario where you would like to simulate location of a specific country. You can easily do that by using the lambdatest capability "GeoLocation" and refer the 2-letter country code in the automation script. You can refer to sample test repo [here](https://github.com/LambdaTest/LT-appium-java-junit).
 
 # Steps:
 
-You can specify a test as passed or failed by Lambda hooks. The following is an example on how to set test result as passed or failed. If the code reaches exception, then it will be marked as failed, else as passed.
+The following is an example on how to set geoLocation in the capabilities.
 
 ```java
 package com.lambdatest;
@@ -16,7 +16,6 @@ import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -29,9 +28,8 @@ public class android {
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
             : System.getenv("LT_ACCESS_KEY");
     public static RemoteWebDriver driver = null;
-    public String gridURL = "@beta-hub.lambdatest.com/wd/hub";
-    
-    //MARKING DEFAULT STATUS AS PASSED
+    public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
+
     public String status = "passed";
     
     @Before
@@ -49,6 +47,10 @@ public class android {
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
+        
+        //ADD GEOLOCATION BASED ON COUNTRY CODE
+        capabilities.setCapability("geoLocation","fr");
+        
         try
         {
             driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);
@@ -78,14 +80,11 @@ public class android {
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
 
-            //MARKING STATUS AS PASSED
             status="passed"; 
         }
             catch (Exception e)
              {
                 System.out.println(e.getMessage());
-                
-                //MARKING STATUS AS FAILED
                 status="failed";
              }
     }
@@ -178,4 +177,4 @@ To stay updated with the latest features and product add-ons, visit [Changelog](
 ## We are here to help you :headphones:
 
 * Got a query? we are available 24x7 to help. [Contact Us](support@lambdatest.com)
-* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-python)
+* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=appium-junit-geolocation)

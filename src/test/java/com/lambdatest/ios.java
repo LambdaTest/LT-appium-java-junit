@@ -38,8 +38,11 @@ public class ios {
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
         
-        //ADD GEOLOCATION BASED ON COUNTRY CODE
-        capabilities.setCapability("geoLocation", "fr");
+        //ACCEPT ALERTS FOR IOS
+        capabilities.setCapability("autoDismissAlerts", true);
+
+        //DISMISS ALERTS FOR IOS
+        capabilities.setCapability("autoAcceptAlerts", true);
         
         try
         {

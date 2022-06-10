@@ -90,9 +90,6 @@ public class android {
         }
     }
 }
-
-
-
 ```
 
 ## Executing The Test

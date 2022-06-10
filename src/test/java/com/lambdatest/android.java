@@ -20,7 +20,7 @@ public class android {
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
             : System.getenv("LT_ACCESS_KEY");
     public static RemoteWebDriver driver = null;
-    public String gridURL = "@beta-hub.lambdatest.com/wd/hub";
+    public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
     public String status = "passed";
     @Before
     public void setUp() throws Exception {
@@ -37,6 +37,10 @@ public class android {
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
+        
+        //ADD GEOLOCATION BASED ON COUNTRY CODE
+        capabilities.setCapability("geoLocation", "fr");
+        
         try
         {
             driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);

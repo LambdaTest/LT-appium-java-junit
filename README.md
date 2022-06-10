@@ -1,10 +1,11 @@
-# How to to change IP geographic location in Java JUnit with Appium on [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=appium-junit-geolocation)
+# How to handle permission pop-ups in Java JUnit with Appium on [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=appium-junit-permissions)
 
-While performing app automation testing with appium on LambdaTest Grid, you may face a scenario where you would like to simulate location of a specific country. You can easily do that by using the lambdatest capability "GeoLocation" and refer the 2-letter country code in the automation script. You can refer to sample test repo [here](https://github.com/LambdaTest/LT-appium-java-junit).
+While performing app automation testing with appium on LambdaTest Grid, you may face a scenario where you would like to automatically handle permission pop-ups. You may choose to either accept all permission pop-ups or dismiss all of them. You can handle the case as mentioned below separately for Android or iOS apps. You can refer to sample test repo [here](https://github.com/LambdaTest/LT-appium-java-junit).
 
 # Steps:
 
-The following is an example on how to set geoLocation in the capabilities.
+The following is an example on how to handle permissions in the capabilities in the automation script.
+
 
 ```java
 package com.lambdatest;
@@ -48,8 +49,15 @@ public class android {
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
         
-        //ADD GEOLOCATION BASED ON COUNTRY CODE
-        capabilities.setCapability("geoLocation","fr");
+        //GRANT PERMISSIONS FOR ANDROID
+        capabilities.setCapability("autoGrantPermissions", true);
+
+        //ACCEPT ALERTS FOR IOS
+        capabilities.setCapability("autoDismissAlerts", true);
+
+        //DISMISS ALERTS FOR IOS
+        capabilities.setCapability("autoAcceptAlerts", true);
+
         
         try
         {
@@ -177,4 +185,4 @@ To stay updated with the latest features and product add-ons, visit [Changelog](
 ## We are here to help you :headphones:
 
 * Got a query? we are available 24x7 to help. [Contact Us](support@lambdatest.com)
-* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=appium-junit-geolocation)
+* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=appium-junit-permissions)

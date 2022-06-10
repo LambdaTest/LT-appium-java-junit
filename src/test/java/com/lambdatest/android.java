@@ -38,8 +38,8 @@ public class android {
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
         
-        //ADD GEOLOCATION BASED ON COUNTRY CODE
-        capabilities.setCapability("geoLocation", "fr");
+        //GRANT PERMISSIONS FOR ANDROID
+        capabilities.setCapability("autoGrantPermissions", true);
         
         try
         {

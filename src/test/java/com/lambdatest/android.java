@@ -32,16 +32,16 @@ public class android {
         capabilities.setCapability("deviceName", "Pixel 6"); //Enter the name of the device here
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","12");
-        capabilities.setCapability("app","App_ID"); //Enter the App ID here
+
+        
+        //Enter the Custom_ID here that was used to upload your application
+
+        capabilities.setCapability("app", "ENTER_CUSTOM_ID_HERE");
+
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
-
-        // ADD THE APP URL OF OTHER APPS THAT YOU'D LIKE TO INSTALL ON THE SAME DEVICE
-
-        capabilities.setCapability("otherApps", "[\"APP_ID\", \"APP_ID\"]");   // ENTER THE OTHER APP URLs HERE IN AN ARRAY FORMAT
-
 
         try
         {
@@ -92,4 +92,3 @@ public class android {
         }
     }
 }
-

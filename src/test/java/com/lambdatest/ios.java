@@ -32,17 +32,15 @@ public class ios {
         capabilities.setCapability("deviceName", "iPhone 12");
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","15");
-        capabilities.setCapability("app","App_ID"); //Enter the APP_ID here
+
+        //Enter the Custom_ID here that was used to upload your application
+
+        capabilities.setCapability("app", "ENTER_CUSTOM_ID_HERE");
+
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
-
-        // ADD THE APP URL OF OTHER APPS THAT YOU'D LIKE TO INSTALL ON THE SAME DEVICE
-
-        capabilities.setCapability("otherApps", "[\"APP_ID\", \"APP_ID\"]");   // ENTER THE OTHER APP URLs HERE IN AN ARRAY FORMAT
-
-
 
         try
         {

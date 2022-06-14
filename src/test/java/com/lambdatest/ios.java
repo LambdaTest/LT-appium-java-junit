@@ -1,5 +1,6 @@
 package com.lambdatest;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
@@ -19,7 +20,7 @@ public class ios {
             : System.getenv("LT_USERNAME");
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"   //Enter the Access key here
             : System.getenv("LT_ACCESS_KEY");
-    public static RemoteWebDriver driver = null;
+    public static AppiumDriver driver = null;
     public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
     public String status = "passed";
     @Before
@@ -32,11 +33,7 @@ public class ios {
         capabilities.setCapability("deviceName", "iPhone 12");
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","15");
-
-        //Enter the Custom_ID here that was used to upload your application
-
-        capabilities.setCapability("app", "ENTER_CUSTOM_ID_HERE");
-
+        capabilities.setCapability("app", "lt://");  //Enter the APP ID here
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
@@ -44,7 +41,7 @@ public class ios {
 
         try
         {
-            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);
+            driver = new AppiumDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);
         }
         catch (MalformedURLException e)
         {
@@ -66,6 +63,12 @@ public class ios {
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
             Thread.sleep(5000);
             driver.navigate().back();
+
+            //Close the application
+            driver.closeApp();
+
+            //Open the application
+            driver.launchApp();
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
 

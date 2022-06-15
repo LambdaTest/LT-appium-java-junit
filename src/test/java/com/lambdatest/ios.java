@@ -32,7 +32,7 @@ public class ios {
         capabilities.setCapability("deviceName", "iPhone 12");
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","15");
-        capabilities.setCapability("app","App_ID"); //Enter the APP_ID here
+        capabilities.setCapability("app","APP_URL"); //Enter the APP_ID here
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);

@@ -1,4 +1,4 @@
-# JUnit With Appium ![pw](	https://img.shields.io/badge/Junit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+# JUnit With Appium ![pw](https://img.shields.io/badge/Junit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)
 
 <p align="center">
 <img height="500" src="https://user-images.githubusercontent.com/95698164/171858482-4986e439-2a31-4947-91e7-93fa9eae7652.png">
@@ -21,17 +21,17 @@
 &emsp;
 &emsp;
 
-*JUnit is a popular unit testing framework for Java, and was an important part of test-driven development. It belongs to a family of unit testing frameworks known as xUnit. Perform [JUnit test on LambdaTest's online cloud](https://www.lambdatest.com/appium-mobile-testing).*
+_JUnit is a popular unit testing framework for Java, and was an important part of test-driven development. It belongs to a family of unit testing frameworks known as xUnit. Perform [JUnit test on LambdaTest's online cloud](https://www.lambdatest.com/appium-mobile-testing)._
 
-*Learn the basics of [Appium testing on the LambdaTest platform](https://www.lambdatest.com/support/docs/getting-started-with-appium-testing/).*
+_Learn the basics of [Appium testing on the LambdaTest platform](https://www.lambdatest.com/support/docs/getting-started-with-appium-testing/)._
 
 [<img height="53" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register)
 
 ## Table of Contents
 
-* [Pre-requisites](#pre-requisites)
-* [Run Your First Test](#run-your-first-test)
-* [Executing The Test](#executing-the-test)
+- [Pre-requisites](#pre-requisites)
+- [Run Your First Test](#run-your-first-test)
+- [Executing The Test](#executing-the-test)
 
 ## Pre-requisites
 
@@ -60,10 +60,10 @@ Set LambdaTest `Username` and `Access Key` in environment variables.
 export LT_USERNAME="YOUR_LAMBDATEST_USERNAME" \
 export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ```
- 
- **For Windows:**
- 
- ```bash
+
+**For Windows:**
+
+```bash
 set LT_USERNAME="YOUR_LAMBDATEST_USERNAME" `
 set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ```
@@ -80,7 +80,7 @@ Upload your **_iOS_** application (.ipa file) or **_android_** application (.apk
 curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
 --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
 --form 'name="Android_App"' \
---form 'appFile=@"/Users/macuser/Downloads/proverbial_android.apk"' 
+--form 'appFile=@"/Users/macuser/Downloads/proverbial_android.apk"'
 ```
 
 **For Windows:**
@@ -115,7 +115,7 @@ curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" -X POST "https://m
 
 Once you are done with the above-mentioned steps, you can initiate your first JUnit test on LambdaTest.
 
-**Test Scenario**: Check out [android.java](https://github.com/LambdaTest/LT-appium-java-junit/blob/master/src/test/java/com/lambdatest/android.java) file to view the sample test script for android and [ios.java](https://github.com/LambdaTest/LT-appium-java-junit/blob/master/src/test/java/com/lambdatest/ios.java) for iOS. 
+**Test Scenario**: Check out [android.java](https://github.com/LambdaTest/LT-appium-java-junit/blob/master/src/test/java/com/lambdatest/android.java) file to view the sample test script for android and [ios.java](https://github.com/LambdaTest/LT-appium-java-junit/blob/master/src/test/java/com/lambdatest/ios.java) for iOS.
 
 ### Configuring Your Test Capabilities
 
@@ -183,7 +183,7 @@ The tests can be executed in the terminal using the following command:
 <TabItem value="android-exec" label="Android" default>
 
 ```bash
-mvn test android.java
+mvn test -P android
 ```
 
 </TabItem>
@@ -191,7 +191,7 @@ mvn test android.java
 <TabItem value="ios-exec" label="iOS" default>
 
 ```bash
-mvn test ios.java
+mvn test -P ios
 ```
 
 </TabItem>
@@ -207,12 +207,11 @@ mvn test ios.java
 
 ## Documentation & Resources :books:
 
-      
 Visit the following links to learn more about LambdaTest's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
 
-* [LambdaTest Documentation](https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
-* [LambdaTest Blog](https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
-* [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)    
+- [LambdaTest Documentation](https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+- [LambdaTest Blog](https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+- [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
 
 ## LambdaTest Community :busts_in_silhouette:
 
@@ -220,31 +219,30 @@ The [LambdaTest Community](https://community.lambdatest.com/) allows people to i
 
 ## What's New At LambdaTest ❓
 
-To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/) 
-      
+To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/)
+
 ## About LambdaTest
 
-[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.    
+[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.
 
 ### Features
 
-* Run Selenium, Cypress, Puppeteer, Playwright, and Appium automation tests across 3000+ real desktop and mobile environments.
-* Real-time cross browser testing on 3000+ environments.
-* Test on Real device cloud
-* Blazing fast test automation with HyperExecute
-* Accelerate testing, shorten job times and get faster feedback on code changes with Test At Scale.
-* Smart Visual Regression Testing on cloud
-* 120+ third-party integrations with your favorite tool for CI/CD, Project Management, Codeless Automation, and more.
-* Automated Screenshot testing across multiple browsers in a single click.
-* Local testing of web and mobile apps.
-* Online Accessibility Testing across 3000+ desktop and mobile browsers, browser versions, and operating systems.
-* Geolocation testing of web and mobile apps across 53+ countries.
-* LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
-    
+- Run Selenium, Cypress, Puppeteer, Playwright, and Appium automation tests across 3000+ real desktop and mobile environments.
+- Real-time cross browser testing on 3000+ environments.
+- Test on Real device cloud
+- Blazing fast test automation with HyperExecute
+- Accelerate testing, shorten job times and get faster feedback on code changes with Test At Scale.
+- Smart Visual Regression Testing on cloud
+- 120+ third-party integrations with your favorite tool for CI/CD, Project Management, Codeless Automation, and more.
+- Automated Screenshot testing across multiple browsers in a single click.
+- Local testing of web and mobile apps.
+- Online Accessibility Testing across 3000+ desktop and mobile browsers, browser versions, and operating systems.
+- Geolocation testing of web and mobile apps across 53+ countries.
+- LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
+
 [<img height="53" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register)
 
-      
 ## We are here to help you :headphones:
 
-* Got a query? we are available 24x7 to help. [Contact Us](support@lambdatest.com)
-* For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+- Got a query? we are available 24x7 to help. [Contact Us](support@lambdatest.com)
+- For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)

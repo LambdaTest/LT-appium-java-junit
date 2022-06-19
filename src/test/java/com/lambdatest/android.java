@@ -32,7 +32,6 @@ public class android {
         capabilities.setCapability("deviceName", "Pixel 6"); //Enter the name of the device here
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","12");
-
         
         //Enter the Custom_ID here that was used to upload your application
 

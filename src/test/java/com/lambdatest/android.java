@@ -20,7 +20,7 @@ public class android {
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
             : System.getenv("LT_ACCESS_KEY");
     public static RemoteWebDriver driver = null;
-    public String gridURL = "@beta-hub.lambdatest.com/wd/hub";
+    public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
     public String status = "passed";
     @Before
     public void setUp() throws Exception {
@@ -32,7 +32,7 @@ public class android {
         capabilities.setCapability("deviceName", "Pixel 6"); //Enter the name of the device here
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","12");
-        capabilities.setCapability("app","App_ID"); //Enter the App ID here
+        capabilities.setCapability("app","APP_URL"); //Enter the App ID here
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);

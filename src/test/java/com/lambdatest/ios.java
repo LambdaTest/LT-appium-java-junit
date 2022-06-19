@@ -37,6 +37,10 @@ public class ios {
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
+        
+        //ADD GEOLOCATION BASED ON COUNTRY CODE
+        capabilities.setCapability("geoLocation", "fr");
+        
         try
         {
             driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);

@@ -11,14 +11,14 @@ Set LambdaTest `Username` and `Access Key` in environment variables.
 
 **For Linux/macOS:**
 
-```js
+```bash
 export LT_USERNAME="YOUR_LAMBDATEST_USERNAME" \
 export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ```
   
 **For Windows:**
 
-```js
+```powershell
 set LT_USERNAME="YOUR_LAMBDATEST_USERNAME" `
 set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ```
@@ -31,7 +31,7 @@ Upload your **_iOS_** application (.ipa file) or **_android_** application (.apk
 
 **Linux/macOS:**
 
-```js
+```bash
 curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
 --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
 --form 'name="Android_App"' \
@@ -41,7 +41,7 @@ curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
 
 **Windows:**
 
-```js
+```powershell
 curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" -X POST "https://manual-api.lambdatest.com/app/upload/realDevice" -F "appFile=@"C:\Users\varunkumarb\Downloads\proverbial_android.apk"" -F "custom_id=ENTER_CUSTOM_ID_HERE"
 ```
 
@@ -49,7 +49,7 @@ curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" -X POST "https://m
 
 **Linux/macOS:**
 
-```js
+```bash
 curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
 --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
 --form 'name="Android_App"' \
@@ -59,13 +59,13 @@ curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
 
 **For Windows:**
 
-```js
+```powershell
 curl --location --request POST "https://manual-api.lambdatest.com/app/upload/realDevice" -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" --header "Content-Type: application/x-www-form-urlencoded" --data-urlencode "url=https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk" --data-urlencode "name=teest" --data-urlencode "custom_id=ENTER_CUSTOM_ID_HERE"
 ```
 
 **Example using a Custom App ID**
 
-```js
+```bash
 curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
 --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
 --form 'name="Android_App"' \
@@ -87,11 +87,7 @@ Once you are done with the above-mentioned steps, you can initiate your first Ja
 
 You can update your custom capabilities in test scripts. In this sample project, we are passing platform name, platform version, device name and app url (generated earlier) along with other capabilities like build name and test name via capabilities object. The capabilities object in the sample code are defined as:
 
-<Tabs className="docs__val">
-
-<TabItem value="ios-config" label="iOS" default>
-
-```
+```java
 public class android {
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
             : System.getenv("LT_USERNAME");
@@ -182,11 +178,8 @@ mvn clean
 
 The tests can be executed in the terminal using the following command:
 
-<Tabs className="docs__val">
-<TabItem value="android-exec" label="Android" default>
-
 ```bash
-mvn test android.java
+mvn test -P android
 ```
 
 </TabItem>
@@ -194,12 +187,9 @@ mvn test android.java
 <TabItem value="ios-exec" label="iOS" default>
 
 ```bash
-mvn test ios.java
+mvn test -P ios
 ```
-
-</TabItem>
-</Tabs>
-
+  
 **Info:** Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on the :link: [LambdaTest App Automation Dashboard](https://appautomation.lambdatest.com/build).
 ## Additional Links
 
@@ -373,9 +363,7 @@ mvn test ios.java
 </TabItem>
 </Tabs>
 
-**Info:** Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on the :link: [LambdaTest App Automation Dashboard](https://appautomation.lambdatest.com/build).
-
-Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on the [LambdaTest App Automation Dashboard](https://appautomation.lambdatest.com/build).
+> **Info:** Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on the :link: [LambdaTest App Automation Dashboard](https://appautomation.lambdatest.com/build).
 
 ## Additional Links
 

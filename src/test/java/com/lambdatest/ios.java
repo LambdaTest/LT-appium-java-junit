@@ -32,11 +32,16 @@ public class ios {
         capabilities.setCapability("deviceName", "iPhone 12");
         capabilities.setCapability("isRealMobile", true);
         capabilities.setCapability("platformVersion","15");
-        capabilities.setCapability("app","APP_URL"); //Enter the APP_ID here
+
+        //Enter the Custom_ID here that was used to upload your application
+
+        capabilities.setCapability("app", "ENTER_CUSTOM_ID_HERE");
+
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
         capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
+
         try
         {
             driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);
@@ -65,17 +70,6 @@ public class ios {
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
-
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
-
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("Browser"))).click();
-            Thread.sleep(10000);
-
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");;
-
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find"))).click();
-            Thread.sleep(5000);
-            driver.navigate().back();
 
             status="passed"; 
         }

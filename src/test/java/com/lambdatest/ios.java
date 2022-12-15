@@ -35,7 +35,7 @@ public class ios {
         capabilities.setCapability("app","lt://proverbial-ios"); //Enter the APP_ID here
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
-        capabilities.setCapability("network",true);
+        capabilities.setCapability("network",false);
         capabilities.setCapability("visual",true);
         try
         {

@@ -35,7 +35,7 @@ public class android {
         capabilities.setCapability("app","lt://proverbial-android"); //Enter the App ID here
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
-        capabilities.setCapability("network",true);
+        capabilities.setCapability("network",false);
         capabilities.setCapability("visual",true);
         try
         {

@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class android {
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
@@ -55,6 +56,7 @@ public class android {
     {
         try
         {
+            driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
 
@@ -68,7 +70,7 @@ public class android {
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("Browser"))).click();;
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("com.lambdatest.proverbial:id/webview"))).click();;
             Thread.sleep(10000);
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");

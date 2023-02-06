@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class androidWeb {
 
@@ -54,7 +55,9 @@ public class androidWeb {
     {
         try
         {
+            driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
             driver.get("https://mfml.in/api/getInfo");
+            driver.getWindowHandles().forEach(handle -> System.out.println(handle));
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.elementToBeClickable(By.id("resolution"))).click();
 

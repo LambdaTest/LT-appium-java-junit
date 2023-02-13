@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 public class ios {
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME"   //Enter the Username here
@@ -56,7 +55,6 @@ public class ios {
     {
         try
         {
-            driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
 

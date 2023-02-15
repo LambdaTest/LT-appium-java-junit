@@ -28,7 +28,7 @@ public class android_ltOptions {
 
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("console", true);
-        ltOptions.put("network", true);
+        ltOptions.put("network", false);
         ltOptions.put("visual", true);
         ltOptions.put("enableCustomTranslation", true);
         ltOptions.put("platformName", "android");

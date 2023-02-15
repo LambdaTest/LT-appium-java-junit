@@ -29,7 +29,7 @@ public class android_ltOptions_w3c {
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("w3c", true);
         ltOptions.put("console", true);
-        ltOptions.put("network", true);
+        ltOptions.put("network", false);
         ltOptions.put("visual", true);
         ltOptions.put("enableCustomTranslation", true);
         ltOptions.put("platformName", "android");

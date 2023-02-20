@@ -1,6 +1,5 @@
-package com.lambdatest;
+package com.lambdatest.ltOptions_w3c;
 
-import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class androidWeb {
+public class androidWeb_none {
 
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
             : System.getenv("LT_USERNAME");
@@ -27,15 +26,16 @@ public class androidWeb {
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability("build", "JUNIT Native Web automation");
-        capabilities.setCapability("name", "Java JUnit Android Pixel 6");
+        capabilities.setCapability("build", "JUNIT_lt:options_w3c");
+        capabilities.setCapability("name", "android_none");
         capabilities.setCapability("platformName", "android");
-        capabilities.setCapability("deviceName", "Pixel .*"); //Enter the name of the device here
+        capabilities.setCapability("deviceName", ".*"); //Enter the name of the device here
         capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion","12");
+        capabilities.setCapability("enableCustomTranslation", true);
+//        capabilities.setCapability("platformVersion","12");
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("console",true);
-        capabilities.setCapability("network",false);
+        capabilities.setCapability("network",true);
         capabilities.setCapability("visual",true);
         try
         {

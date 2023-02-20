@@ -1,6 +1,5 @@
-package com.lambdatest;
+package com.lambdatest.ltOptions_w3c;
 
-import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,9 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class androidWeb {
+public class androidWeb_ltOptions_w3c {
 
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
             : System.getenv("LT_USERNAME");
@@ -27,16 +27,20 @@ public class androidWeb {
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability("build", "JUNIT Native Web automation");
-        capabilities.setCapability("name", "Java JUnit Android Pixel 6");
-        capabilities.setCapability("platformName", "android");
-        capabilities.setCapability("deviceName", "Pixel .*"); //Enter the name of the device here
-        capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion","12");
-        capabilities.setCapability("deviceOrientation", "PORTRAIT");
-        capabilities.setCapability("console",true);
-        capabilities.setCapability("network",false);
-        capabilities.setCapability("visual",true);
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("w3c", true);
+        ltOptions.put("console", true);
+        ltOptions.put("network", true);
+        ltOptions.put("visual", true);
+        ltOptions.put("enableCustomTranslation", true);
+        ltOptions.put("platformName", "android");
+        ltOptions.put("deviceName", ".*");
+        //        ltOptions.put("platformVersion", "10");
+        ltOptions.put("deviceOrientation", "PORTRAIT");
+        ltOptions.put("build", "JUNIT_lt:options_w3c");
+        ltOptions.put("name", "android_lt:options_w3c");
+        ltOptions.put("isRealMobile", true);
+        capabilities.setCapability("lt:options", ltOptions);
         try
         {
             driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);

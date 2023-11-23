@@ -10,7 +10,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -42,13 +41,8 @@ public class ios_AppAutomation_ltOptions_w3c {
         ltOptions.put("name", "ios_lt:options_w3c");
         ltOptions.put("isRealMobile", true);
         capabilities.setCapability("lt:options", ltOptions);
-        try {
-            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
-        } catch (MalformedURLException e) {
-            System.out.println("Invalid grid URL");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
     }
 
     @Test
@@ -56,23 +50,15 @@ public class ios_AppAutomation_ltOptions_w3c {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
             Thread.sleep(5000);
             driver.navigate().back();
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(By.id("Browser"))).click();
             Thread.sleep(10000);
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");
-            ;
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find"))).click();
             Thread.sleep(5000);
             driver.navigate().back();

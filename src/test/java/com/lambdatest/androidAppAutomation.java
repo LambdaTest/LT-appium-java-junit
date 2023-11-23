@@ -46,29 +46,18 @@ public class androidAppAutomation {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
-            ;
             Thread.sleep(5000);
             driver.navigate().back();
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
-            ;
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(By.id("webview"))).click();
-            ;
             Thread.sleep(10000);
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");
-
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find"))).click();
             Thread.sleep(5000);
             driver.navigate().back();
-
             status = "passed";
         } catch (Exception e) {
             System.out.println(e.getMessage());

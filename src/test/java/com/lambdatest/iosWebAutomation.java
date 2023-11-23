@@ -47,7 +47,6 @@ public class iosWebAutomation {
             driver.getWindowHandles().forEach(handle -> System.out.println(handle));
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.elementToBeClickable(By.id("resolution"))).click();
-
             wait.until(ExpectedConditions.elementToBeClickable(By.id("location"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("details"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("timezone"))).click();

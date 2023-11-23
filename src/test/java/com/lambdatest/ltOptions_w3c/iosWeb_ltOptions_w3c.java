@@ -1,4 +1,4 @@
-package com.lambdatest;
+package com.lambdatest.ltOptions_w3c;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class ios_WebAutomation_ltOptions_w3c {
+public class iosWeb_ltOptions_w3c {
 
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here

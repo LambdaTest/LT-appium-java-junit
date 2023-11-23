@@ -1,4 +1,4 @@
-package com.lambdatest;
+package com.lambdatest.ltOptions_w3c;
 
 import io.appium.java_client.MobileBy;
 import org.junit.After;
@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.URL;
 import java.util.HashMap;
 
-public class android_AppAutomation_ltOptions_w3c {
+public class android_ltOptions_w3c {
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
     public String app_id = System.getenv("LT_APP_ID") == null ? "lt://proverbial-android" : System.getenv("LT_APP_ID");      //Enter your LambdaTest App ID at the place of lt://proverbial-android

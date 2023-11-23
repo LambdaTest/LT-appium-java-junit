@@ -10,10 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class android_WebAutomation_ltOptions_w3c {
+public class androidWeb {
 
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
@@ -26,22 +25,19 @@ public class android_WebAutomation_ltOptions_w3c {
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("w3c", true);
-        ltOptions.put("console", true);
-        ltOptions.put("network", true);
-        ltOptions.put("visual", true);
-        ltOptions.put("enableCustomTranslation", true);
-        ltOptions.put("platformName", "android");
-        ltOptions.put("deviceName", ".*");
-        //        ltOptions.put("platformVersion", "10");
-        ltOptions.put("deviceOrientation", "PORTRAIT");
-        ltOptions.put("build", "JUNIT_lt:options_w3c");
-        ltOptions.put("name", "android_lt:options_w3c");
-        ltOptions.put("isRealMobile", true);
-        capabilities.setCapability("lt:options", ltOptions);
+        capabilities.setCapability("build", "JUNIT Native Web automation");
+        capabilities.setCapability("name", "Java JUnit Android");
+        capabilities.setCapability("platformName", "android");
+        capabilities.setCapability("deviceName", "Pixel .*"); //Enter the name of the device here
+        capabilities.setCapability("isRealMobile", true);
+        capabilities.setCapability("platformVersion", "12");
+        capabilities.setCapability("deviceOrientation", "PORTRAIT");
+        capabilities.setCapability("console", true);
+        capabilities.setCapability("network", false);
+        capabilities.setCapability("visual", true);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
+                capabilities);
     }
 
     @Test

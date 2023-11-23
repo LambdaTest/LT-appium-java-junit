@@ -44,14 +44,9 @@ public class android {
     capabilities.setCapability("deviceOrientation", "PORTRAIT");
     capabilities.setCapability("network", false);
     capabilities.setCapability("visual", true);
-    try {
-      driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
-        capabilities);
-    } catch (MalformedURLException e) {
-      System.out.println("Invalid grid URL");
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
+
+    driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
+      capabilities);
   }
 
   @Test

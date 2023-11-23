@@ -16,61 +16,58 @@ import java.util.concurrent.TimeUnit;
 
 public class androidWeb {
 
-  String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
-    : System.getenv("LT_USERNAME");
-  String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
-    : System.getenv("LT_ACCESS_KEY");
-  public String grid_url = System.getenv("LT_GRID_URL") == null ?
-    "mobile-hub.lambdatest.com" :
-    System.getenv("LT_GRID_URL");
-  public String status = "passed";
-  public static RemoteWebDriver driver = null;
+    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
+    public String grid_url = System.getenv("LT_GRID_URL") == null ? "mobile-hub.lambdatest.com" : System.getenv("LT_GRID_URL");
+    public String status = "passed";
 
-  @Before
-  public void setUp() throws Exception {
-    DesiredCapabilities capabilities = new DesiredCapabilities();
+    public static RemoteWebDriver driver = null;
 
-    capabilities.setCapability("build", "JUNIT Native Web automation");
-    capabilities.setCapability("name", "Java JUnit Android");
-    capabilities.setCapability("platformName", "android");
-    capabilities.setCapability("deviceName", "Pixel .*"); //Enter the name of the device here
-    capabilities.setCapability("isRealMobile", true);
-    capabilities.setCapability("platformVersion", "12");
-    capabilities.setCapability("deviceOrientation", "PORTRAIT");
-    capabilities.setCapability("console", true);
-    capabilities.setCapability("network", false);
-    capabilities.setCapability("visual", true);
+    @Before
+    public void setUp() throws Exception {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
-    driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
-      capabilities);
-  }
+        capabilities.setCapability("build", "JUNIT Native Web automation");
+        capabilities.setCapability("name", "Java JUnit Android");
+        capabilities.setCapability("platformName", "android");
+        capabilities.setCapability("deviceName", "Pixel .*"); //Enter the name of the device here
+        capabilities.setCapability("isRealMobile", true);
+        capabilities.setCapability("platformVersion", "12");
+        capabilities.setCapability("deviceOrientation", "PORTRAIT");
+        capabilities.setCapability("console", true);
+        capabilities.setCapability("network", false);
+        capabilities.setCapability("visual", true);
 
-  @Test
-  public void testSimple() throws Exception {
-    try {
-      driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-      driver.get("https://mfml.in/api/getInfo");
-      driver.getWindowHandles().forEach(handle -> System.out.println(handle));
-      WebDriverWait wait = new WebDriverWait(driver, 30);
-      wait.until(ExpectedConditions.elementToBeClickable(By.id("resolution"))).click();
-
-      wait.until(ExpectedConditions.elementToBeClickable(By.id("location"))).click();
-      wait.until(ExpectedConditions.elementToBeClickable(By.id("details"))).click();
-      wait.until(ExpectedConditions.elementToBeClickable(By.id("timezone"))).click();
-
-      status = "passed";
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      status = "failed";
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
+                capabilities);
     }
-  }
 
-  @After
-  public void tearDown() throws Exception {
-    if (driver != null) {
-      driver.executeScript("lambda-status=" + status);
-      driver.quit();
+    @Test
+    public void testSimple() throws Exception {
+        try {
+            driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+            driver.get("https://mfml.in/api/getInfo");
+            driver.getWindowHandles().forEach(handle -> System.out.println(handle));
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("resolution"))).click();
+
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("location"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("details"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("timezone"))).click();
+
+            status = "passed";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            status = "failed";
+        }
     }
-  }
+
+    @After
+    public void tearDown() throws Exception {
+        if (driver != null) {
+            driver.executeScript("lambda-status=" + status);
+            driver.quit();
+        }
+    }
 
 }

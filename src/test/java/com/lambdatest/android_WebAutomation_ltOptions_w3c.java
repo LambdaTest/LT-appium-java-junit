@@ -1,4 +1,4 @@
-package com.lambdatest.ltOptions_w3c;
+package com.lambdatest;
 
 import org.junit.After;
 import org.junit.Before;

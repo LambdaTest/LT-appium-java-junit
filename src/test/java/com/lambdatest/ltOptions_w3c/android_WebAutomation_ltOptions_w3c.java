@@ -16,13 +16,13 @@ import java.util.concurrent.TimeUnit;
 
 public class android_WebAutomation_ltOptions_w3c {
 
-    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
-            : System.getenv("LT_USERNAME");
-    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
-            : System.getenv("LT_ACCESS_KEY");
-    public static RemoteWebDriver driver = null;
-    public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
+    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
+    public String grid_url = System.getenv("LT_GRID_URL") == null ? "mobile-hub.lambdatest.com" : System.getenv("LT_GRID_URL");
     public String status = "passed";
+
+    public static RemoteWebDriver driver = null;
+
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -43,7 +43,7 @@ public class android_WebAutomation_ltOptions_w3c {
         capabilities.setCapability("lt:options", ltOptions);
         try
         {
-            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);
+            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
         }
         catch (MalformedURLException e)
         {

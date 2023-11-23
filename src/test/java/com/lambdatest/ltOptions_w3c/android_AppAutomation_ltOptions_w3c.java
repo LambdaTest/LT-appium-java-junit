@@ -15,13 +15,15 @@ import java.net.URL;
 import java.util.HashMap;
 
 public class android_AppAutomation_ltOptions_w3c {
-    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
-            : System.getenv("LT_USERNAME");
-    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
-            : System.getenv("LT_ACCESS_KEY");
-    public static RemoteWebDriver driver = null;
-    public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
+    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
+    public String app_id = System.getenv("LT_APP_ID") == null ? "lt://proverbial-android" : System.getenv("LT_APP_ID");      //Enter your LambdaTest App ID at the place of lt://proverbial-android
+    public String grid_url = System.getenv("LT_GRID_URL") == null ? "mobile-hub.lambdatest.com" : System.getenv("LT_GRID_URL");
     public String status = "passed";
+
+    public static RemoteWebDriver driver = null;
+
+
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -35,44 +37,41 @@ public class android_AppAutomation_ltOptions_w3c {
         ltOptions.put("platformName", "android");
         ltOptions.put("deviceName", ".*");
         //        ltOptions.put("platformVersion", "10");
-        ltOptions.put("app", "lt://proverbial-android");
+        ltOptions.put("app", app_id);
         ltOptions.put("deviceOrientation", "PORTRAIT");
         ltOptions.put("build", "JUNIT_lt:options_w3c");
         ltOptions.put("name", "android_lt:options_w3c");
         ltOptions.put("isRealMobile", true);
         capabilities.setCapability("lt:options", ltOptions);
-        try
-        {
-            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);
-        }
-        catch (MalformedURLException e)
-        {
+        try {
+            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
+        } catch (MalformedURLException e) {
             System.out.println("Invalid grid URL");
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Test
-    public void testSimple() throws Exception
-    {
-        try
-        {
+    public void testSimple() throws Exception {
+        try {
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
 
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();;
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
+            ;
             Thread.sleep(5000);
             driver.navigate().back();
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
 
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();;
+            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
+            ;
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("webview"))).click();;
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("webview"))).click();
+            ;
             Thread.sleep(10000);
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");
@@ -81,19 +80,16 @@ public class android_AppAutomation_ltOptions_w3c {
             Thread.sleep(5000);
             driver.navigate().back();
 
-            status="passed"; 
+            status = "passed";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            status = "failed";
         }
-            catch (Exception e)
-             {
-                System.out.println(e.getMessage());
-                status="failed";
-             }
     }
+
     @After
-    public void tearDown() throws Exception
-    {
-        if (driver != null)
-        {
+    public void tearDown() throws Exception {
+        if (driver != null) {
             driver.executeScript("lambda-status=" + status);
             driver.quit();
         }

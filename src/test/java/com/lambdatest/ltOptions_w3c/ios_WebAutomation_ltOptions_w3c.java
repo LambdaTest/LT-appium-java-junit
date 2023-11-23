@@ -16,13 +16,13 @@ import java.util.concurrent.TimeUnit;
 
 public class ios_WebAutomation_ltOptions_w3c {
 
-    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME"   //Enter the Username here
-            : System.getenv("LT_USERNAME");
-    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"   //Enter the Access key here
-            : System.getenv("LT_ACCESS_KEY");
-    public static RemoteWebDriver driver = null;
-    public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
+    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
+    public String grid_url = System.getenv("LT_GRID_URL") == null ? "mobile-hub.lambdatest.com" : System.getenv("LT_GRID_URL");
     public String status = "passed";
+
+    public static RemoteWebDriver driver = null;
+
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -41,24 +41,18 @@ public class ios_WebAutomation_ltOptions_w3c {
         ltOptions.put("name", "ios_lt:options_w3c");
         ltOptions.put("isRealMobile", true);
         capabilities.setCapability("lt:options", ltOptions);
-        try
-        {
-            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + gridURL), capabilities);
-        }
-        catch (MalformedURLException e)
-        {
+        try {
+            driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
+        } catch (MalformedURLException e) {
             System.out.println("Invalid grid URL");
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Test
-    public void testSimple() throws Exception
-    {
-        try
-        {
+    public void testSimple() throws Exception {
+        try {
             driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
             driver.get("https://mfml.in/api/getInfo");
             driver.getWindowHandles().forEach(handle -> System.out.println(handle));
@@ -69,19 +63,16 @@ public class ios_WebAutomation_ltOptions_w3c {
             wait.until(ExpectedConditions.elementToBeClickable(By.id("details"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("timezone"))).click();
 
-            status="passed";
-        }
-        catch (Exception e)
-        {
+            status = "passed";
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            status="failed";
+            status = "failed";
         }
     }
+
     @After
-    public void tearDown() throws Exception
-    {
-        if (driver != null)
-        {
+    public void tearDown() throws Exception {
+        if (driver != null) {
             driver.executeScript("lambda-status=" + status);
             driver.quit();
         }

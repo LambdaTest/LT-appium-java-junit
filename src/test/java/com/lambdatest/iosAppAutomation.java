@@ -13,27 +13,27 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 
-public class android {
+public class iosAppAutomation {
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
-    public String app_id = System.getenv("LT_APP_ID") == null ? "lt://proverbial-android" : System.getenv("LT_APP_ID");      //Enter your LambdaTest App ID at the place of lt://proverbial-android
+    public String app_id = System.getenv("LT_APP_ID") == null ? "lt://proverbial-ios" : System.getenv("LT_APP_ID");      //Enter your LambdaTest App ID at the place of lt://proverbial-android
     public String grid_url = System.getenv("LT_GRID_URL") == null ? "mobile-hub.lambdatest.com" : System.getenv("LT_GRID_URL");
     public String status = "passed";
 
     public static RemoteWebDriver driver = null;
+
 
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("build", "JUNIT Native App automation");
-        capabilities.setCapability("name", "Java JUnit Android");
-        capabilities.setCapability("platformName", "android");
-        capabilities.setCapability("deviceName", "Pixel.*"); //Enter the name of the device here
+        capabilities.setCapability("name", "Java JUnit iOS");
+        capabilities.setCapability("platformName", "ios");
+        capabilities.setCapability("deviceName", "iPhone.*");
         capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion", "12");
-        capabilities.setCapability("app", app_id); //Enter the App ID here
-        capabilities.setCapability("deviceOrientation", "PORTRAIT");
+        capabilities.setCapability("platformVersion", "15");
+        capabilities.setCapability("app", app_id); //Enter the APP_ID here
         capabilities.setCapability("network", false);
         capabilities.setCapability("visual", true);
 
@@ -48,22 +48,20 @@ public class android {
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
-            ;
             Thread.sleep(5000);
             driver.navigate().back();
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
-            ;
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
 
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("webview"))).click();
-            ;
+            wait.until(ExpectedConditions.elementToBeClickable(By.id("Browser"))).click();
             Thread.sleep(10000);
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");
+            ;
 
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find"))).click();
             Thread.sleep(5000);

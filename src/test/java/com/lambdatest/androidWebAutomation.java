@@ -1,6 +1,5 @@
 package com.lambdatest;
 
-import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +9,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class androidWeb {
+public class androidWebAutomation {
 
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here

@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
-public class android_ltOptions {
+public class android_AppAutomation_ltOptions_w3c {
     String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
             : System.getenv("LT_USERNAME");
     String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
@@ -27,6 +27,7 @@ public class android_ltOptions {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("w3c", true);
         ltOptions.put("console", true);
         ltOptions.put("network", false);
         ltOptions.put("visual", true);
@@ -37,7 +38,7 @@ public class android_ltOptions {
         ltOptions.put("app", "lt://proverbial-android");
         ltOptions.put("deviceOrientation", "PORTRAIT");
         ltOptions.put("build", "JUNIT_lt:options_w3c");
-        ltOptions.put("name", "android_lt:options");
+        ltOptions.put("name", "android_lt:options_w3c");
         ltOptions.put("isRealMobile", true);
         capabilities.setCapability("lt:options", ltOptions);
         try

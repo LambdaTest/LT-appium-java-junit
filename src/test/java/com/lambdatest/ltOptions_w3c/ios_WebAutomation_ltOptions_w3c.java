@@ -14,11 +14,11 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class androidWeb_ltOptions_w3c {
+public class ios_WebAutomation_ltOptions_w3c {
 
-    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" //Enter the Username here
+    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME"   //Enter the Username here
             : System.getenv("LT_USERNAME");
-    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"  //Enter the Access key here
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY"   //Enter the Access key here
             : System.getenv("LT_ACCESS_KEY");
     public static RemoteWebDriver driver = null;
     public String gridURL = "@mobile-hub.lambdatest.com/wd/hub";
@@ -33,12 +33,12 @@ public class androidWeb_ltOptions_w3c {
         ltOptions.put("network", true);
         ltOptions.put("visual", true);
         ltOptions.put("enableCustomTranslation", true);
-        ltOptions.put("platformName", "android");
+        ltOptions.put("platformName", "ios");
         ltOptions.put("deviceName", ".*");
         //        ltOptions.put("platformVersion", "10");
         ltOptions.put("deviceOrientation", "PORTRAIT");
         ltOptions.put("build", "JUNIT_lt:options_w3c");
-        ltOptions.put("name", "android_lt:options_w3c");
+        ltOptions.put("name", "ios_lt:options_w3c");
         ltOptions.put("isRealMobile", true);
         capabilities.setCapability("lt:options", ltOptions);
         try

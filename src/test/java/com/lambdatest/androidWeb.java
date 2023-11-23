@@ -41,7 +41,8 @@ public class androidWeb {
     capabilities.setCapability("network", false);
     capabilities.setCapability("visual", true);
     try {
-      driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url), capabilities);
+      driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
+        capabilities);
     } catch (MalformedURLException e) {
       System.out.println("Invalid grid URL");
     } catch (Exception e) {

@@ -35,7 +35,7 @@ public class android_ltOptions_w3c {
         ltOptions.put("enableCustomTranslation", true);
         ltOptions.put("platformName", "android");
         ltOptions.put("deviceName", ".*");
-        //        ltOptions.put("platformVersion", "10");
+        ltOptions.put("platformVersion", "12");
         ltOptions.put("app", app_id);
         ltOptions.put("deviceOrientation", "PORTRAIT");
         ltOptions.put("build", "JUNIT_lt:options_w3c");

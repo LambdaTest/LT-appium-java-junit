@@ -34,7 +34,7 @@ public class ios_ltOptions_w3c {
         ltOptions.put("enableCustomTranslation", true);
         ltOptions.put("platformName", "ios");
         ltOptions.put("deviceName", ".*");
-//        ltOptions.put("platformVersion", "15");
+        ltOptions.put("platformVersion", "15");
         ltOptions.put("app", app_id);
         ltOptions.put("deviceOrientation", "PORTRAIT");
         ltOptions.put("build", "JUNIT_lt:options_w3c");

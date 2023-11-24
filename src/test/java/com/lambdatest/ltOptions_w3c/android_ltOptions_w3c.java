@@ -32,6 +32,7 @@ public class android_ltOptions_w3c {
         ltOptions.put("console", true);
         ltOptions.put("network", false);
         ltOptions.put("visual", true);
+        ltOptions.put("autoGrantPermissions", true);
         ltOptions.put("enableCustomTranslation", true);
         ltOptions.put("platformName", "android");
         ltOptions.put("deviceName", ".*");

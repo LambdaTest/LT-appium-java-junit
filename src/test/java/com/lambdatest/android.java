@@ -36,6 +36,7 @@ public class android {
         capabilities.setCapability("deviceOrientation", "PORTRAIT");
         capabilities.setCapability("network", false);
         capabilities.setCapability("visual", true);
+        capabilities.setCapability("autoGrantPermissions", true);
 
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
                 capabilities);

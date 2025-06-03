@@ -4,6 +4,7 @@ import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.By;
@@ -44,21 +45,45 @@ public class ios {
     @Test
     public void testSimple() throws Exception {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
-            Thread.sleep(5000);
-            driver.navigate().back();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.id("Browser"))).click();
-            Thread.sleep(10000);
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find"))).click();
-            Thread.sleep(5000);
+
+            WebDriverWait Wait = new WebDriverWait(driver, 30);
+            //Changing Locator type from Accessibility ID to Name as in the Proverbial app there is no Accessibility ID Attribute for Any Element
+            //Changes the color of the text
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("color"))).click();
+            Thread.sleep(1000);
+
+            //Changes the text to "Proverbial"
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("Text"))).click();
+            Thread.sleep(1000);
+
+            //Toast will be visible
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("toast"))).click();
+            Thread.sleep(1000);
+
+            //Notification will be visible
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("notification"))).click();
+            Thread.sleep(4000);
+
+            //Opens the geolocation page
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("geoLocation"))).click();
+            Thread.sleep(4000);
+
+            //Takes back
             driver.navigate().back();
 
+            //Takes to speedtest page
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("speedTest"))).click();
+            Thread.sleep(4000);
+            driver.navigate().back();
+
+            //Opens the browser
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("Browser"))).click();
+            Thread.sleep(1000);
+            WebElement url = driver.findElement(By.name("url"));
+            url.click();
+            url.sendKeys("https://www.lambdatest.com");
+            Wait.until(ExpectedConditions.presenceOfElementLocated(By.name("find"))).click();
+            Thread.sleep(1000);
             status = "passed";
         } catch (Exception e) {
             System.out.println(e.getMessage());

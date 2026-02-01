@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -50,7 +51,7 @@ public class androidWeb_ltOptions_w3c {
             driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
             driver.get("https://mfml.in/api/getInfo");
             driver.getWindowHandles().forEach(handle -> System.out.println(handle));
-            WebDriverWait wait = new WebDriverWait(driver, 30);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             wait.until(ExpectedConditions.elementToBeClickable(By.id("resolution"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("location"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("details"))).click();

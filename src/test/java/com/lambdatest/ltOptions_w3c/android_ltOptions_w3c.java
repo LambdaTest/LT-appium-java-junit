@@ -1,27 +1,29 @@
 package com.lambdatest.ltOptions_w3c;
 
-import io.appium.java_client.MobileBy;
+// 1. Updated imports
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 
 public class android_ltOptions_w3c {
-    String username = System.getenv("LT_USERNAME") == null ? "LT_USERNAME" : System.getenv("LT_USERNAME"); //Enter the Username here
-    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY"); //Enter the Access key here
-    public String app_id = System.getenv("LT_APP_ID") == null ? "lt://proverbial-android" : System.getenv("LT_APP_ID");      //Enter your LambdaTest App ID at the place of lt://proverbial-android
+    String username = System.getenv("LT_USERNAME") == null ? "YOUR_USERNAME" : System.getenv("LT_USERNAME");
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY");
+    public String app_id = System.getenv("LT_APP_ID") == null ? "lt://APP10160622431766424164986229" : System.getenv("LT_APP_ID");
     public String grid_url = System.getenv("LT_GRID_URL") == null ? "mobile-hub.lambdatest.com" : System.getenv("LT_GRID_URL");
     public String status = "passed";
 
-    public static RemoteWebDriver driver = null;
-
+    // 2. Changed RemoteWebDriver to AndroidDriver
+    public static AndroidDriver driver = null;
 
     @Before
     public void setUp() throws Exception {
@@ -33,9 +35,8 @@ public class android_ltOptions_w3c {
         ltOptions.put("network", false);
         ltOptions.put("visual", true);
         ltOptions.put("autoGrantPermissions", true);
-        ltOptions.put("enableCustomTranslation", true);
         ltOptions.put("platformName", "android");
-        ltOptions.put("deviceName", ".*");
+        ltOptions.put("deviceName", "Pixel.*");
         ltOptions.put("platformVersion", "12");
         ltOptions.put("app", app_id);
         ltOptions.put("deviceOrientation", "PORTRAIT");
@@ -44,29 +45,40 @@ public class android_ltOptions_w3c {
         ltOptions.put("isRealMobile", true);
         capabilities.setCapability("lt:options", ltOptions);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
+        // 3. Initialize using AndroidDriver
+        driver = new AndroidDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"), capabilities);
     }
 
     @Test
     public void testSimple() throws Exception {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+            // 4. Using AppiumBy.id instead of MobileBy
+            wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("color"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("geoLocation"))).click();
+
             Thread.sleep(5000);
+
+            // This will now work because AndroidDriver knows how to handle "back"
             driver.navigate().back();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("Text"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("notification"))).click();
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("toast"))).click();
+
+            wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("Text"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("notification"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("toast"))).click();
+
             wait.until(ExpectedConditions.elementToBeClickable(By.id("webview"))).click();
-            Thread.sleep(10000);
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("url"))).sendKeys("https://www.lambdatest.com/");
-            wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("find"))).click();
+            Thread.sleep(5000);
+
+            wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("url"))).sendKeys("https://www.lambdatest.com/");
+            wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("find"))).click();
+
             Thread.sleep(5000);
             driver.navigate().back();
+
             status = "passed";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error found: " + e.getMessage());
             status = "failed";
         }
     }
@@ -79,4 +91,3 @@ public class android_ltOptions_w3c {
         }
     }
 }
-

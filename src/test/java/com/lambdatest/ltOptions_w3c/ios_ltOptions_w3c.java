@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 
 public class ios_ltOptions_w3c {
@@ -48,7 +49,7 @@ public class ios_ltOptions_w3c {
     @Test
     public void testSimple() throws Exception {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 30);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("color"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(MobileBy.id("geoLocation"))).click();
             Thread.sleep(5000);

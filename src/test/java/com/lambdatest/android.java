@@ -32,9 +32,9 @@ public class android {
         ltOptions.put("w3c", true);
         ltOptions.put("platformName", "android");
         ltOptions.put("deviceName", "Pixel.*");
-        ltOptions.put("platformVersion", "12");
+        ltOptions.put("platformVersion", "14");
         ltOptions.put("isRealMobile", true);
-        ltOptions.put("app", "lt://APP10160622431766424164986229");
+        ltOptions.put("app", "lt://APP1016055391769006462699400");
         ltOptions.put("build", "JUNIT Native App automation");
         ltOptions.put("name", "Java JUnit Android");
         ltOptions.put("visual", true);

@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.time.Duration;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class iosWeb {
@@ -24,16 +26,18 @@ public class iosWeb {
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
 
-        capabilities.setCapability("build", "JUNIT Native Web automation");
-        capabilities.setCapability("name", "Java JUnit iOS");
-        capabilities.setCapability("platformName", "ios");
-        capabilities.setCapability("deviceName", "iPhone .*");
-        capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion", "15");
-        capabilities.setCapability("console", true);
-        capabilities.setCapability("network", false);
-        capabilities.setCapability("visual", true);
+         ltOptions.put("build", "JUNIT Native Web automation");
+         ltOptions.put("name", "Java JUnit iOS");
+         ltOptions.put("platformName", "ios");
+         ltOptions.put("deviceName", "iPhone .*");
+         ltOptions.put("isRealMobile", true);
+         ltOptions.put("platformVersion", "18");
+         ltOptions.put("console", true);
+         ltOptions.put("network", false);
+         ltOptions.put("visual", true);
+        capabilities.setCapability("lt:options", ltOptions);
 
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
                 capabilities);
@@ -45,7 +49,7 @@ public class iosWeb {
             driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
             driver.get("https://mfml.in/api/getInfo");
             driver.getWindowHandles().forEach(handle -> System.out.println(handle));
-            WebDriverWait wait = new WebDriverWait(driver, 30);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             wait.until(ExpectedConditions.elementToBeClickable(By.id("resolution"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("location"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("details"))).click();

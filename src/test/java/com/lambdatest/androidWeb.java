@@ -4,12 +4,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.time.Duration;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class androidWeb {
@@ -24,17 +27,22 @@ public class androidWeb {
     @Before
     public void setUp() throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+         ltOptions.put("build", "JUNIT Native Web automation");
+         ltOptions.put("name", "Java JUnit Android");
+         ltOptions.put("platformName", "android");
+         ltOptions.put("deviceName", "Pixel .*"); //Enter the name of the device here
+         ltOptions.put("isRealMobile", true);
+         ltOptions.put("platformVersion", "14");
+         ltOptions.put("deviceOrientation", "PORTRAIT");
+         ltOptions.put("console", true);
+         ltOptions.put("network", false);
+         ltOptions.put("visual", true);
+         ltOptions.put("browserName", "chrome");
+        ltOptions.put("autoGrantPermissions", true);
+        capabilities.setCapability("lt:options", ltOptions);
 
-        capabilities.setCapability("build", "JUNIT Native Web automation");
-        capabilities.setCapability("name", "Java JUnit Android");
-        capabilities.setCapability("platformName", "android");
-        capabilities.setCapability("deviceName", "Pixel .*"); //Enter the name of the device here
-        capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion", "12");
-        capabilities.setCapability("deviceOrientation", "PORTRAIT");
-        capabilities.setCapability("console", true);
-        capabilities.setCapability("network", false);
-        capabilities.setCapability("visual", true);
+
 
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@" + grid_url + "/wd/hub"),
                 capabilities);
@@ -46,7 +54,7 @@ public class androidWeb {
             driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
             driver.get("https://mfml.in/api/getInfo");
             driver.getWindowHandles().forEach(handle -> System.out.println(handle));
-            WebDriverWait wait = new WebDriverWait(driver, 30);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             wait.until(ExpectedConditions.elementToBeClickable(By.id("resolution"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("location"))).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.id("details"))).click();

@@ -34,7 +34,7 @@ public class ios {
         ltOptions.put("deviceName", "iPhone.*");
         ltOptions.put("isRealMobile", true);
         ltOptions.put("platformVersion", "18");
-        ltOptions.put("app", "lt://APP1016018631760361477812757");
+        ltOptions.put("app", "<your_app_id)>");
         ltOptions.put("network", false);
         ltOptions.put("visual", true);
         ltOptions.put("w3c", true); // Ensure W3C is enabled

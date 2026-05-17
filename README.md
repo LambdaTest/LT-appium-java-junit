@@ -1,248 +1,118 @@
-# JUnit With Appium ![pw](https://img.shields.io/badge/Junit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+# Run Appium Tests with Java and JUnit on TestMu AI (Formerly LambdaTest)
 
 <p align="center">
-<img height="500" src="https://user-images.githubusercontent.com/95698164/171858482-4986e439-2a31-4947-91e7-93fa9eae7652.png">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://mvnrepository.com/artifact/junit/junit"><img src="https://img.shields.io/maven-central/v/junit/junit.svg?style=for-the-badge&labelColor=000000" alt="JUnit version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
 </p>
 
-<p align="center">
-  <a href="https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit" target="_bank">Blog</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit" target="_bank">Docs</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit" target="_bank">Learning Hub</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/newsletter/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit" target="_bank">Newsletter</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.lambdatest.com/certifications/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit" target="_bank">Certifications</a>
-  &nbsp; &#8901; &nbsp;
-  <a href="https://www.youtube.com/c/LambdaTest" target="_bank">YouTube</a>
-</p>
-&emsp;
-&emsp;
-&emsp;
+## Getting Started
 
-_JUnit is a popular unit testing framework for Java, and was an important part of test-driven development. It belongs to a family of unit testing frameworks known as xUnit. Perform [JUnit test on LambdaTest's online cloud](https://www.lambdatest.com/appium-mobile-testing?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)._
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-_Learn the basics of [Appium testing on the LambdaTest platform](https://www.lambdatest.com/support/docs/getting-started-with-appium-testing/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)._
+With TestMu AI (Formerly LambdaTest), you can run Appium tests in Java with JUnit across real Android and iOS devices. This sample shows how to configure Java JUnit Appium tests with Maven to run on the TestMu AI Real Device Cloud.
 
-[<img height="53" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
-## Table of Contents
+### Prerequisites
 
-- [Pre-requisites](#pre-requisites)
-- [Run Your First Test](#run-your-first-test)
-- [Executing The Test](#executing-the-test)
+- Java 8 or higher
+- Maven
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-## Pre-requisites
+### Setup
 
-Before you can start performing App automation testing with Appium, you would need to follow these steps:
-
-- Make sure you have Appium’s [Java client library](https://github.com/appium/java-client) installed.
-
-### Clone The Sample Project
-
-Clone the LambdaTest’s :link: [LT-appium-java-junit](https://github.com/LambdaTest/LT-appium-java-junit) repository and navigate to the code directory as shown below:
+Clone and install dependencies:
 
 ```bash
-git clone https://github.com/LambdaTest/LT-appium-java-junit
-cd LT-appium-java-junit
+git clone https://github.com/LambdaTest/LT-appium-java-junit && cd LT-appium-java-junit
+mvn clean install
 ```
 
-### Setting Up Your Authentication
+Set your credentials as environment variables.
 
-Make sure you have your LambdaTest credentials with you to run test automation scripts on LambdaTest. To obtain your access credentials, [purchase a plan](https://billing.lambdatest.com/billing/plans?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit) or access the [Automation Dashboard](https://appautomation.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit).
-
-Set LambdaTest `Username` and `Access Key` in environment variables.
-
-**For Linux/macOS:**
+**macOS / Linux:**
 
 ```bash
-export LT_USERNAME="YOUR_LAMBDATEST_USERNAME" \
-export LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
 ```
 
-**For Windows:**
+**Windows:**
 
 ```bash
-set LT_USERNAME="YOUR_LAMBDATEST_USERNAME" `
-set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
 ```
 
-### Upload Your Application
-
-Upload your **_iOS_** application (.ipa file) or **_android_** application (.apk file) to the LambdaTest servers using our **REST API**. You need to provide your **Username** and **AccessKey** in the format `Username:AccessKey` in the **cURL** command for authentication. Make sure to add the path of the **appFile** in the cURL request. Here is an example cURL request to upload your app using our REST API:
-
-**Using App File:**
-
-**For Linux/macOS:**
-
-```bash
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
---location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
---form 'name="Android_App"' \
---form 'appFile=@"/Users/macuser/Downloads/proverbial_android.apk"'
-```
-
-**For Windows:**
-
-```bash
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" -X POST "https://manual-api.lambdatest.com/app/upload/realDevice" -F "appFile=@"/Users/macuser/Downloads/proverbial_android.apk""
-```
-
-**Using App URL:**
-
-**For Linux/macOS:**
-
-```bash
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
---location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
---form 'name="Android_App"' \
---form 'url="https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk"'
-```
-
-**For Windows:**
-
-```bash
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" -X POST "https://manual-api.lambdatest.com/app/upload/realDevice" -d "{"url":"https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk","name":"sample.apk"}"
-```
-
-**Tip:**
-
-- If you do not have any **.apk** or **.ipa** file, you can run your sample tests on LambdaTest by using our sample :link: [Android app](https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk) or sample :link: [iOS app](https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_ios.ipa).
-- Response of above cURL will be a **JSON** object containing the `App URL` of the format - <lt://APP123456789123456789> and will be used in the next step.
-
-## Run Your First Test
-
-Once you are done with the above-mentioned steps, you can initiate your first JUnit test on LambdaTest.
-
-**Test Scenario**: Check out [android.java](https://github.com/LambdaTest/LT-appium-java-junit/blob/master/src/test/java/com/lambdatest/android.java) file to view the sample test script for android and [ios.java](https://github.com/LambdaTest/LT-appium-java-junit/blob/master/src/test/java/com/lambdatest/ios.java) for iOS.
-
-### Configuring Your Test Capabilities
-
-You can update your custom capabilities in test scripts. In this sample project, we are passing platform name, platform version, device name and app url (generated earlier) along with other capabilities like build name and test name via capabilities object. The capabilities object in the sample code are defined as:
-
-<Tabs className="docs__val">
-<TabItem value="android-config" label="Android" default>
-
-```java
-DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        capabilities.setCapability("build", "JUNIT Native App automation");
-        capabilities.setCapability("name", "Java JUnit Android Pixel 6");
-        capabilities.setCapability("platformName", "android");
-        capabilities.setCapability("deviceName", "Pixel 6"); //Enter the name of the device here
-        capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion","12");
-        capabilities.setCapability("app","YOUR_APP_URL"); //Enter the App ID here
-        capabilities.setCapability("deviceOrientation", "PORTRAIT");
-        capabilities.setCapability("console",true);
-        capabilities.setCapability("network",true);
-        capabilities.setCapability("visual",true);
-```
-
-</TabItem>
-
-<TabItem value="ios-config" label="iOS" default>
-
-```java
-DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        capabilities.setCapability("build", "JUNIT Native App automation");
-        capabilities.setCapability("name", "Java JUnit iOS iPhone 12");
-        capabilities.setCapability("platformName", "ios");
-        capabilities.setCapability("deviceName", "iPhone 12");
-        capabilities.setCapability("isRealMobile", true);
-        capabilities.setCapability("platformVersion","15");
-        capabilities.setCapability("app","YOUR_APP_URL"); //Enter the APP_ID here
-        capabilities.setCapability("deviceOrientation", "PORTRAIT");
-        capabilities.setCapability("console",true);
-        capabilities.setCapability("network",true);
-        capabilities.setCapability("visual",true);
-```
-
-</TabItem>
-
-</Tabs>
-
-**Info Note:**
-
-- You must add the generated **APP_URL** to the `"app"` capability in the config file.
-- You can generate capabilities for your test requirements with the help of our inbuilt **[Capabilities Generator tool](https://www.lambdatest.com/capabilities-generator/beta/index.html?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)**. A more Detailed Capability Guide is available [here](https://www.lambdatest.com/support/docs/desired-capabilities-in-appium/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit).
-
-## Executing The Test
-
-Execute the following commands to install the required dependencies:
-
-```bash
-mvn clean
-```
-
-The tests can be executed in the terminal using the following command:
-
-<Tabs className="docs__val">
-<TabItem value="android-exec" label="Android" default>
+### Run tests
 
 ```bash
 mvn test -P android
 ```
 
-</TabItem>
-
-<TabItem value="ios-exec" label="iOS" default>
+For iOS:
 
 ```bash
 mvn test -P ios
 ```
 
-</TabItem>
-</Tabs>
+View results on your TestMu AI dashboard.
 
-**Info:** Your test results would be displayed on the test console (or command-line interface if you are using terminal/cmd) and on the :link: [LambdaTest App Automation Dashboard](https://appautomation.lambdatest.com/build?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit).
+### Local testing with TestMu AI Tunnel
 
-## Additional Links
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
 
-- [Advanced Configuration for Capabilities](https://www.lambdatest.com/support/docs/desired-capabilities-in-appium/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
-- [How to test locally hosted apps](https://www.lambdatest.com/support/docs/testing-locally-hosted-pages/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
-- [How to integrate LambdaTest with CI/CD](https://www.lambdatest.com/support/docs/integrations-with-ci-cd-tools/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
 
-## Documentation & Resources :books:
+Add the following to your capabilities:
 
-Visit the following links to learn more about LambdaTest's features, setup and tutorials around test automation, mobile app testing, responsive testing, and manual testing.
+```js
+tunnel: true,
+```
 
-- [LambdaTest Documentation](https://www.lambdatest.com/support/docs/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
-- [LambdaTest Blog](https://www.lambdatest.com/blog/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
-- [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+## Contributions
 
-## LambdaTest Community :busts_in_silhouette:
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Java version, OS, and Maven version.
 
-The [LambdaTest Community](https://community.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe 🌎
+## TestMu AI (Formerly LambdaTest) Community
 
-## What's New At LambdaTest ❓
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-To stay updated with the latest features and product add-ons, visit [Changelog](https://changelog.lambdatest.com/)
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-## About LambdaTest
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-[LambdaTest](https://www.lambdatest.com?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-### Features
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-- Run Selenium, Cypress, Puppeteer, Playwright, and Appium automation tests across 3000+ real desktop and mobile environments.
-- Real-time cross browser testing on 3000+ environments.
-- Test on Real device cloud
-- Blazing fast test automation with HyperExecute
-- Accelerate testing, shorten job times and get faster feedback on code changes with Test At Scale.
-- Smart Visual Regression Testing on cloud
-- 120+ third-party integrations with your favorite tool for CI/CD, Project Management, Codeless Automation, and more.
-- Automated Screenshot testing across multiple browsers in a single click.
-- Local testing of web and mobile apps.
-- Online Accessibility Testing across 3000+ desktop and mobile browsers, browser versions, and operating systems.
-- Geolocation testing of web and mobile apps across 53+ countries.
-- LT Browser - for responsive testing across 50+ pre-installed mobile, tablets, desktop, and laptop viewports
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-[<img height="53" width="200" src="https://user-images.githubusercontent.com/70570645/171866795-52c11b49-0728-4229-b073-4b704209ddde.png">](https://accounts.lambdatest.com/register?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-## We are here to help you :headphones:
+👉 Find the new home for [LambdaTest](https://www.testmuai.com).
 
-- Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
-- For more info, visit - [LambdaTest](https://www.lambdatest.com/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java-junit)
+### How LambdaTest Evolved into TestMu AI
+
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
+
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
+
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
+
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
+
+## Support
+
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
